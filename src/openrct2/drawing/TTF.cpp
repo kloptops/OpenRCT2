@@ -138,6 +138,9 @@ bool TTFInitialise()
             LOG_VERBOSE("Unable to load '%s'", fontPath.c_str());
             return false;
         }
+
+        LOG_VERBOSE("Loaded font '%s' at %dpt, from '%s'",
+            fontDesc->font_name, fontDesc->ptSize, fontPath.c_str());
     }
 
     TTFToggleHinting(true);

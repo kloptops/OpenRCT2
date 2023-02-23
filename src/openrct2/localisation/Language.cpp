@@ -31,8 +31,8 @@ const LanguageDescriptor LanguagesDescriptors[LANGUAGE_COUNT] =
     { "cs-CZ", "Czech",                 u8"Čeština",             LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_CZECH
     { "da-DK", "Danish",                "Dansk",                 LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_DANISH
     { "de-DE", "German",                "Deutsch",               LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_GERMAN
-    { "en-GB", "English (UK)",          "English (UK)",          LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_ENGLISH_UK
-    { "en-US", "English (US)",          "English (US)",          LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_ENGLISH_US
+    { "en-GB", "English (UK)",          "English (UK)",          LANGUAGE_UNDEFINED, FAMILY(&TTFFamilySansSerif),                false }, // LANGUAGE_ENGLISH_UK
+    { "en-US", "English (US)",          "English (US)",          LANGUAGE_UNDEFINED, FAMILY(&TTFFamilySansSerif),                false }, // LANGUAGE_ENGLISH_US
     { "eo-ZZ", "Esperanto",             "Esperanto",             LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_ESPERANTO
     { "es-ES", "Spanish",               u8"Español",             LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_SPANISH
     { "fr-FR", "French",                u8"Français",            LANGUAGE_UNDEFINED, FAMILY_OPENRCT2_SPRITE,                false }, // LANGUAGE_FRENCH

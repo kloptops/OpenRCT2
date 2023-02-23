@@ -103,7 +103,6 @@ option(DISABLE_HTTP "Disable HTTP support.")
 option(DISABLE_NETWORK "Disable multiplayer functionality. Mainly for testing.")
 option(DISABLE_TTF "Disable support for TTF provided by freetype2.")
 option(ENABLE_SCRIPTING "Enable script / plugin support." ON)
-
 option(DISABLE_GUI "Don't build GUI. (Headless only.)")
 
 if (FORCE32)

@@ -326,6 +326,11 @@ namespace Platform
             return {};
         }
 
+        if (Platform::GetFileSize(font.filename) > 0)
+        {
+            return std::string(font.filename);
+        }
+
         FcPattern* pat = FcNameParse(reinterpret_cast<const FcChar8*>(font.font_name));
 
         FcConfigSubstitute(config, pat, FcMatchPattern);

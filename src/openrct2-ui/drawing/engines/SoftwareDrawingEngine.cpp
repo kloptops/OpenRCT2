@@ -19,6 +19,11 @@
 #include <openrct2/drawing/X8DrawingEngine.h>
 #include <openrct2/ui/UiContext.h>
 
+#ifdef ENABLE_SDL_SIM_CURSOR
+#define SDL_SIM_ENABLE
+#include <SDL_sim_cursor.h>
+#endif
+
 using namespace OpenRCT2;
 using namespace OpenRCT2::Drawing;
 using namespace OpenRCT2::Ui;
@@ -130,6 +135,10 @@ private:
                 LOG_FATAL("SDL_BlitSurface %s", SDL_GetError());
                 exit(1);
             }
+
+#ifdef ENABLE_SDL_SIM_CURSOR
+            SDL_BlitCursor(windowSurface);
+#endif
         }
         else
         {
@@ -139,6 +148,10 @@ private:
                 LOG_FATAL("SDL_BlitSurface %s", SDL_GetError());
                 exit(1);
             }
+
+#ifdef ENABLE_SDL_SIM_CURSOR
+            SDL_BlitCursorScaled(_RGBASurface, gConfigGeneral.WindowScale);
+#endif
 
             // then scale to window size. Without changing to RGBA first, SDL complains
             // about blit configurations being incompatible.

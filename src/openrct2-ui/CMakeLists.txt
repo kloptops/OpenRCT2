@@ -8,6 +8,7 @@ endif ()
 option(DISABLE_FLAC     "Disable FLAC support.")
 option(DISABLE_VORBIS   "Disable OGG/VORBIS support.")
 option(DISABLE_OPENGL   "Disable OpenGL support.")
+option(ENABLE_SDL_SIM_CURSOR "Enable SDL simulated cursor support" OFF)
 
 # Third party libraries
 if (MSVC)
@@ -53,9 +54,26 @@ if (APPLE)
     set_source_files_properties(${OPENRCT2_UI_MM_SOURCES} PROPERTIES COMPILE_FLAGS "-x objective-c++ -fmodules")
 endif ()
 
+if (ENABLE_SDL_SIM_CURSOR)
+    message("Building with SDL_sim_cursor support.")
+    add_definitions(-DENABLE_SDL_SIM_CURSOR)
+
+    include_directories("${CMAKE_CURRENT_LIST_DIR}/../thirdparty/SDL_sim_cursor")
+
+    # SDL_sim_cursor is third party, ignore all warnings
+    set(OPENRCT2_SDL_SIM_CURSOR_SOURCES "${CMAKE_CURRENT_LIST_DIR}/../thirdparty/SDL_sim_cursor/SDL_sim_cursor.c")
+    if (MSVC)
+        set_source_files_properties(${OPENRCT2_SDL_SIM_CURSOR_SOURCES} PROPERTIES COMPILE_FLAGS "/w")
+    else ()
+        set_source_files_properties(${OPENRCT2_SDL_SIM_CURSOR_SOURCES} PROPERTIES COMPILE_FLAGS "-w")
+    endif ()
+
+    message("-- ${OPENRCT2_SDL_SIM_CURSOR_SOURCES}")
+endif ()
+
 # Outputs
-project(openrct2 CXX)
-add_executable(${PROJECT_NAME} ${OPENRCT2_UI_SOURCES} ${OPENRCT2_UI_MM_SOURCES})
+project(openrct2 CXX C)
+add_executable(${PROJECT_NAME} ${OPENRCT2_UI_SOURCES} ${OPENRCT2_UI_MM_SOURCES} ${OPENRCT2_SDL_SIM_CURSOR_SOURCES})
 SET_CHECK_CXX_FLAGS(${PROJECT_NAME})
 ipo_set_target_properties(${PROJECT_NAME})
 

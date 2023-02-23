@@ -48,6 +48,11 @@
 #include <openrct2/world/Location.hpp>
 #include <vector>
 
+#ifdef ENABLE_SDL_SIM_CURSOR
+#define SDL_SIM_ENABLE
+#include <SDL_sim_cursor.h>
+#endif
+
 using namespace OpenRCT2;
 using namespace OpenRCT2::Drawing;
 using namespace OpenRCT2::Scripting;
@@ -119,6 +124,11 @@ public:
         {
             SDLException::Throw("SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK)");
         }
+
+#ifdef ENABLE_SDL_SIM_CURSOR
+        SDL_SIM_MouseInit();
+#endif
+
         _cursorRepository.LoadCursors();
         _shortcutManager.LoadUserBindings();
     }
@@ -126,6 +136,11 @@ public:
     ~UiContext() override
     {
         UiContext::CloseWindow();
+
+#ifdef ENABLE_SDL_SIM_CURSOR
+        SDL_SIM_MouseQuit();
+#endif
+
         SDL_QuitSubSystem(SDL_INIT_VIDEO);
     }
 

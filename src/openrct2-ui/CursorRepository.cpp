@@ -16,7 +16,13 @@
 #include <openrct2/interface/Cursors.h>
 #include <vector>
 
+#ifdef ENABLE_SDL_SIM_CURSOR
+#define SDL_SIM_ENABLE
+#include <SDL_sim_cursor.h>
+#endif
+
 using namespace OpenRCT2::Ui;
+
 
 CursorRepository::~CursorRepository()
 {
@@ -107,6 +113,8 @@ SDL_Cursor* CursorRepository::Create(const CursorData* cursorInfo, uint8_t scale
 
 void CursorRepository::SetCursorScale(uint8_t cursorScale)
 {
+    cursorScale = 1.0;
+
     if (cursorScale > 0.0)
     {
         _currentCursorScale = cursorScale;

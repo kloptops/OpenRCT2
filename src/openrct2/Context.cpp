@@ -338,11 +338,11 @@ namespace OpenRCT2
 
             if (String::Equals(gConfigGeneral.LastRunVersion, OPENRCT2_VERSION))
             {
-                gOpenRCT2ShowChangelog = false;
+                // gOpenRCT2ShowChangelog = false;
             }
             else
             {
-                gOpenRCT2ShowChangelog = true;
+                // gOpenRCT2ShowChangelog = true;
                 gConfigGeneral.LastRunVersion = OPENRCT2_VERSION;
                 ConfigSaveDefault();
             }

@@ -136,6 +136,8 @@ static bool LoadCustomConfigFont(LocalisationService& localisationService)
           gConfigFonts.OffsetY, gConfigFonts.HeightMedium, gConfigFonts.HintingThreshold, nullptr },
     } };
 
+    printf("LoadCustomConfigFont %s\n", gConfigFonts.FontName.c_str());
+
     TTFDispose();
     localisationService.UseTrueTypeFont(true);
     gCurrentTTFFontSet = &TTFFontCustom;
